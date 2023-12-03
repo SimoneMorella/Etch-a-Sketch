@@ -9,6 +9,11 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 html {
@@ -138,8 +143,7 @@ input[type="range"]::-webkit-slider-thumb {
     height: 500px;
     display: flex;
     flex-wrap: wrap;
-    border-radius: 3px;
-    background-color: whitesmoke;
+    background-color: #FFFFFF;
     box-shadow: 3px 6px 3px var(--first-color);
 }
 
@@ -167,4 +171,8 @@ footer {
 .unit {
     box-sizing: border-box;
     border: 0.5px solid black;
+}
+
+.passing:hover {
+    background-color: red;
 }
