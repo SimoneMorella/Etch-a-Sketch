@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <title>Etch-a-Sketch</title>
+</head>
+<body>
+    <header class="title">
+        Etch-a-Sketch
+    </header>
+    <main class="main">
+        <div class="ctrls">
+            <input id="clrpicker" type="color">
+            <button id="clrbtn">Color</button>
+            <button id="rainbowbtn">Rainbow</button>
+            <button id="eraserbtn">Eraser</button>
+            <button id="clearbtn">Clear</button>
+            <div class="showunit">16x16</div>
+            <input type="range" value="16" id="gridunit" min="1" max="64">
+        </div>
+        <div class="grid"></div>
+    </main>
+    <footer>
+        SimoneMorella 
+        <a href="https://github.com/SimoneMorella"><i class='bx bxl-github' id="gitico"></i></a>
+        <script>
+            document.write(new Date().getFullYear())
+        </script>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
