@@ -4,16 +4,15 @@ const colorPick = document.querySelector("#clrpicker");
 const nOfUnit = document.querySelector(".showunit");
 const unitSelector = document.querySelector("#gridunit");
 
-
 let unitInRow = 16;
 let color = '#000000';
 let currentMode = 'color';
 let tempColor; //always declare variables out!!!
-let colorRGB = hexToRgb(color);
 
 let mouseDown = false;
 document.body.addEventListener('mousedown', () => { mouseDown = true});
 document.body.addEventListener('mouseup', () => { mouseDown = false});
+
 
 btns.forEach((btn) => {
     btn.addEventListener("click", function (e) {
@@ -36,7 +35,6 @@ btns.forEach((btn) => {
     })
 })
 
-
 function getRandomColor() {
     randRed = Math.floor(Math.random() * 256);
     randGreen = Math.floor(Math.random() * 256);
@@ -46,8 +44,6 @@ function getRandomColor() {
 
 function createDivs(numOfUnit) {
     let unitSize = gridbox.offsetWidth / numOfUnit;
-    console.log(gridbox.offsetWidth);
-    console.log(unitSize);
     for (let i = 0; i < numOfUnit ** 2; i++) {
         let unitSquare = document.createElement('div');
         unitSquare.className = "unit";
@@ -66,35 +62,15 @@ function clearGrid() {
     }
 }
 
-// convert hex to rgb to do the darkening effect
-function hexToRgb(hex) {
-    // Remove the hash (#) if it exists
-    hex = hex.replace(/^#/, '');
-
-    // Parse the hex code into individual color components
-    var bigint = parseInt(hex, 16);
-
-    // Extract the red, green, and blue components
-    var r = (bigint >> 16) & 255;
-    var g = (bigint >> 8) & 255;
-    var b = bigint & 255;
-
-    // Return the RGB values as a string
-    return `rgb(${r}, ${g}, ${b})`;
-}
-  
-
 // to get color from the input
 colorPick.addEventListener("input", (e) => {
     color = e.target.value;
-    colorRGB = hexToRgb(color);
-    console.log(hexToRgb(color));
 })
 
 function changeColor(e) {
     if (e.type === 'mouseenter' && mouseDown) {
         if (currentMode === 'color') {
-            e.target.style.backgroundColor = colorRGB;
+            e.target.style.backgroundColor = color;
         }
         else if (currentMode === 'rainbow') {
             e.target.style.backgroundColor = getRandomColor();
@@ -130,5 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
     createDivs(unitInRow);
 })
 
-
-//to make the additional shade first convert hex to rgb then add +10 of shade everytime!
+window.addEventListener('resize', () => {
+    clearGrid();
+    createDivs(unitInRow);
+})
